@@ -158,7 +158,7 @@ const Offerdetails = ({route, navigation}) => {
            <TouchableOpacity 
            onPress={()=> Linking.openURL(Details.direction)}
            style={{ borderRadius:500/2,paddingHorizontal:20,paddingVertical:10, backgroundColor:AppColors.themecolor}}>
-               <Text >
+               <Text style={{fontWeight:'700'}} >
                    Directions
                </Text>
            </TouchableOpacity>

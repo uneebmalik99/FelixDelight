@@ -26,7 +26,7 @@ export function DrawerContent(props) {
 
 
     return(
-        <View style={{height:deviceHeight, backgroundColor:AppColors.themecolor}}>
+        <View style={{height:deviceHeight,paddingBottom:15, backgroundColor:AppColors.themecolor}}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent1}>
                     <View style={styles.userInfoSection}>
