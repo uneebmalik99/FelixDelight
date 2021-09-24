@@ -145,7 +145,7 @@ const Offerdetails = ({route, navigation}) => {
            </View>  
 
                    <View style={{width:'30%',justifyContent:'center',alignItems:'center', height:'100%',}}>
-           <Text style={{color:AppColors.themecolor}}> <Text>{Details.currency  ? Details.currency[0].currency_name:null}</Text> {Details.price} </Text>
+           <Text style={{color:AppColors.themecolor}}> <Text>{Details.price}</Text> {Details.currency  ? Details.currency[0].currency_name:null}</Text>
 
            </View>    
         </View>

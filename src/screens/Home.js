@@ -387,7 +387,7 @@ const Home = ({navigation}) => {
                 </View>
 
                 <View style={{width:'95%',justifyContent:'center',alignItems:'center', height:'70%'}}>
-                <Text style={{alignSelf:'center', textAlign:'center', fontSize:24, color:AppColors.themecolor, fontWeight:'700'}}><Text>{item.currency[0].currency_name}</Text> {item.price}</Text>
+                <Text style={{alignSelf:'center', textAlign:'center', fontSize:24, color:AppColors.themecolor, fontWeight:'700'}}><Text>{item.price}</Text> {item.currency[0].currency_name}</Text>
 
                 </View>    
                 </View>    
@@ -591,7 +591,7 @@ const Home = ({navigation}) => {
                         </View>
 
                         <View style={{width:'95%',justifyContent:'center',alignItems:'center', height:'70%'}}>
-                       <Text style={{alignSelf:'center', color:AppColors.themecolor, textAlign:'center', fontSize:24, fontWeight:'700'}}><Text>{item.currency[0].currency_name}</Text> {item.price}</Text>
+                       <Text style={{alignSelf:'center', color:AppColors.themecolor, textAlign:'center', fontSize:24, fontWeight:'700'}}><Text>{item.price}</Text> {item.currency[0].currency_name} </Text>
 
                        </View>    
                     </View>   
