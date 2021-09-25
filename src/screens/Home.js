@@ -14,26 +14,19 @@ const Home = ({navigation}) => {
 
 
 
-    const [ List , setList] = useState([
-        
-    ])
+    const [ List , setList] = useState([])
     const [refreshing, setRefreshing] = React.useState(false);
     const [placeholder , setplaceholder] = useState(true)
     const [currenttime , setcurrenttime] = useState('')
     const [filter , setfilter] = useState(false)
-    const [ List2 , setList2] = useState([
-        
-    ])
-    
+    const [ List2 , setList2] = useState([])
     const [LocationStatus , setLocationStatus] = useState('')
     const [sorttext , setsorttext] = useState('All')
     const [banner , setbanner] = useState('')
     const [sortmodal , setsortmodal] = useState(false)
     const [latitude , setlatitude] =useState('')
     const [longitude , setlongitude] =useState('')
-    const [ pinned , setpinned] = useState([
-       
-    ])
+    const [ pinned , setpinned] = useState([ ])
 
 
 
@@ -62,38 +55,37 @@ const Home = ({navigation}) => {
       }
     };
    
+    const getOneTimeLocation = () => {
+      Geolocation.getCurrentPosition(
+        //Will give you the current location
+        (position) => {
+          // setLocationStatus('You are Here');
 
+          //getting the Longitude from the location json
+          const currentLongitude = 
+            JSON.stringify(position.coords.longitude);
+        setlongitude(currentLongitude)
 
-  const getOneTimeLocation = () => {
-    Geolocation.getCurrentPosition(
-      //Will give you the current location
-      (position) => {
-        // setLocationStatus('You are Here');
+          //getting the Latitude from the location json
+          const currentLatitude = 
+            JSON.stringify(position.coords.latitude);
+                setlatitude(currentLatitude)
 
-        //getting the Longitude from the location json
-        const currentLongitude = 
-          JSON.stringify(position.coords.longitude);
-      setlongitude(currentLongitude)
+          //Setting Longitude state
+          
+          //Setting Longitude state
+        },
+        (error) => {
+          setLocationStatus(error.message);
+        },
+        {
+          enableHighAccuracy: false,
+          timeout: 30000,
+          maximumAge: 1000
+        },
+      );
+    };
 
-        //getting the Latitude from the location json
-        const currentLatitude = 
-          JSON.stringify(position.coords.latitude);
-               setlatitude(currentLatitude)
-
-        //Setting Longitude state
-        
-        //Setting Longitude state
-      },
-      (error) => {
-        setLocationStatus(error.message);
-      },
-      {
-        enableHighAccuracy: false,
-        timeout: 30000,
-        maximumAge: 1000
-      },
-    );
-  };
     useEffect(() => {
         
     var hours = new Date().getHours(); //Current Hours
@@ -104,35 +96,8 @@ const Home = ({navigation}) => {
     // alert(currenttime)
         // Update the document title using the browser API
 
-
-
-
         requestLocationPermission();
        
-
-
-
-
-
-
-        
-        // Geolocation.getCurrentPosition(
-        //     //Will give you the current location
-        //     (position) => {
-        //       //getting the Longitude from the location json
-        //       const currentLongitude =
-        //         JSON.stringify(position.coords.longitude);
-        //   setlongitude(currentLongitude)
-        //       //getting the Latitude from the location json
-        //       const currentLatitude =
-        //         JSON.stringify(position.coords.latitude);
-        //         setlatitude(currentLatitude)
-                
-        //      }, (error) => alert(error.message), { 
-        //        enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 
-        //      }
-        //   );
-
         CallingPinnedApi() 
         CallingDealsApi() 
         CallingBannerApi()   
@@ -140,30 +105,30 @@ const Home = ({navigation}) => {
       
     },[ ]);
 
-   const  CallingPinnedApi = (isCallingtrue) => {
-      
-    fetch('https://felixdelight.com/api/pinned', {
-        method: 'GET',
-        headers: {
-           
-        //    'Content-Type': 'multipart/form-data',
-        },
-    })
-        .then((response) => response.json())
-        .then((responseJson) => {
-            console.log(JSON.stringify(responseJson));
-            setpinned(responseJson)
- 
-        })
-        .catch((error) => {
-            console.warn(error)
-        });
+    const  CallingPinnedApi = (isCallingtrue) => {
+        
+      fetch('https://admin.felixdelight.com/api/pinned', {
+          method: 'GET',
+          headers: {
             
+          //    'Content-Type': 'multipart/form-data',
+          },
+      })
+          .then((response) => response.json())
+          .then((responseJson) => {
+              console.log(JSON.stringify(responseJson));
+              setpinned(responseJson)
+  
+          })
+          .catch((error) => {
+              console.warn(error)
+          });
+              
     }
 
     const  CallingDealsApi = (isCallingtrue) => {
       
-        fetch('https://felixdelight.com/api/alldeals', {
+        fetch('https://admin.felixdelight.com/api/alldeals', {
             method: 'GET',
             headers: {
                
@@ -193,11 +158,11 @@ const Home = ({navigation}) => {
                 console.warn(error)
             });
                 
-        }
+    }
 
-   const  CallingBannerApi = (isCallingtrue) => {
+    const  CallingBannerApi = (isCallingtrue) => {
       
-            fetch('https://felixdelight.com/api/banner', {
+            fetch('https://admin.felixdelight.com/api/banner', {
                 method: 'GET',
                 headers: {
                    
@@ -215,9 +180,9 @@ const Home = ({navigation}) => {
                     console.warn(error)
                 });
                     
-        }
+    }
 
-   const onRefresh = React.useCallback(() => {
+    const onRefresh = React.useCallback(() => {
      setplaceholder(true)
           setRefreshing(true);
 
@@ -228,7 +193,6 @@ const Home = ({navigation}) => {
           // wait(2000).then(() => setRefreshing(false));
     }, []);
        
-
     const filternow = (value) =>{
         if(value == '0'){
 
@@ -256,6 +220,7 @@ const Home = ({navigation}) => {
         }
         
     }
+
     const sorting = (value) =>{
 
         if(value == '0'){
@@ -319,8 +284,7 @@ const Home = ({navigation}) => {
         
     }
    
-
-     const renderList = ({ item, index }) => {
+    const renderList = ({ item, index }) => {
        
             var pdis = getPreciseDistance(
               {latitude:latitude, longitude: longitude},
@@ -612,8 +576,7 @@ const Home = ({navigation}) => {
 
            
 <View>
-
-            <FlatList
+                                <FlatList
                                     
                                     data={List}
                                     renderItem={renderList}
@@ -621,7 +584,7 @@ const Home = ({navigation}) => {
                                     extraData={List}
                                     
                                 />
-                                </View>
+                                 </View>
 
           <View style={{height:15,}}>
 

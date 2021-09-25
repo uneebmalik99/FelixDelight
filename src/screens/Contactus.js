@@ -24,7 +24,7 @@ const Contactus = ({navigation}) => {
 
    const  CallingContactusApi = () => {
       
-    fetch('https://felixdelight.com/api/contactus', {
+    fetch('https://admin.felixdelight.com/api/contactus', {
         method: 'GET',
         headers: {
            

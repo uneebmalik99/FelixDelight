@@ -30,7 +30,7 @@ const Offerdetails = ({route, navigation}) => {
 
     const  CallingSpecficDealApi = () => {
       
-        fetch('https://felixdelight.com/api/specificDeal/'+id, {
+        fetch('https://admin.felixdelight.com/api/specificDeal/'+id, {
             method: 'GET',
             headers: {
                
